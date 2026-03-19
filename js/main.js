@@ -67,14 +67,15 @@ function getCommentsId() {
   );
 }
 function getComments() {
-  return {
+  const count = Math.floor(Math.random() * 3) + 1;
+
+  return Array.from({ length: count }, () => ({
     idComm: getCommentsId(),
     avatar: getAvatarUrl(),
     message: getMessage(),
     name: getName(),
-  };
-} 
-const arr = new Array(4).fill(null).map((n, index) => getComments());
+  }));
+}
 
 function getPhoto(n) {
   return {
