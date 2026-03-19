@@ -66,30 +66,15 @@ function getCommentsId() {
     Math.random() * (RandomNumberMax - RandomNumberMin + 1) + RandomNumberMin,
   );
 }
-function createOneComment() {
+function getComments() {
   return {
     idComm: getCommentsId(),
     avatar: getAvatarUrl(),
     message: getMessage(),
     name: getName(),
   };
-}
-function getComments() {
-    let count = Math.floor(Math.random() * 3) + 1;
-    let comments = [
-          {
-        idComm: getCommentsId(),
-        avatar: getAvatarUrl(),
-        message: getMessage(),
-        name: getName(),
-      },
-    ];
-
-  for (let i = 0; i < count; i++) {
-    comments.push(createOneComment());
-  }
-  return comments;
-}
+} 
+const arr = new Array(4).fill(null).map((n, index) => getComments());
 
 function getPhoto(n) {
   return {
