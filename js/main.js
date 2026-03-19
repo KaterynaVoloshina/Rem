@@ -88,4 +88,4 @@ function getPhoto(n) {
 }
 
 const array = new Array(25).fill(null).map((n, index) => getPhoto(index + 1));
-console.log(array);
+console.log(array)
