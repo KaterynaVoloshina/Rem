@@ -1,21 +1,20 @@
-import { arrayPhoto } from "./main.js";
-
+export function cloneReplaceArrPhoto(backArrPhoto) {
 const template = document.querySelector('#picture').content;
 const container = document.querySelector('.pictures');
-const fragment = document.createDocumentFragment();
+    const fragment = document.createDocumentFragment();
+    backArrPhoto.forEach((photo) => { 
+        const cloneTemplate = template.cloneNode(true);
 
-arrayPhoto.forEach((photo) => {
-  const cloneTemplate = template.cloneNode(true);
+        const img = cloneTemplate.querySelector('.picture__img');
+        const likes = cloneTemplate.querySelector('.picture__likes');
+        const comments = cloneTemplate.querySelector('.picture__comments');
 
-  const img = cloneTemplate.querySelector('.picture__img');
-  const likes = cloneTemplate.querySelector('.picture__likes');
-  const comments = cloneTemplate.querySelector('.picture__comments');
+        img.src = photo.url;
+        likes.textContent = photo.likes;
+        comments.textContent = photo.comment.length;
 
-  img.src = photo.url;
-  likes.textContent = photo.likes;
-  comments.textContent = photo.comment.length;
+        fragment.appendChild(cloneTemplate);
+    });
 
-  fragment.appendChild(cloneTemplate);
-});
-
-container.appendChild(fragment);
+    container.appendChild(fragment);
+};
